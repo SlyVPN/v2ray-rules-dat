@@ -39,7 +39,7 @@ jobs:
         run: |
           install -Dp ./geoip.dat ./publish/geoip.dat
           install -Dp ./geoip.dat.sha256sum ./publish/geoip.dat.sha256sum
-    - name: Release and upload assets
+      - name: Release and upload assets
         uses: softprops/action-gh-release@v0.1.6
         with:
           name: ${{ env.RELEASE_NAME }}
