@@ -49,7 +49,8 @@ jobs:
         uses: softprops/action-gh-release@v0.1.6
         with:
           name: ${{ env.RELEASE_NAME }}
-          tag_name: ${{ env.TAG_NAME }}
+ #         tag_name: ${{ env.TAG_NAME }}
+          tag_name: ${{ steps.tag.outputs.release_tag }}
           draft: false
           prerelease: false
           files: |
