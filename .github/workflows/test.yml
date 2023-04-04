@@ -53,7 +53,7 @@ jobs:
           repo: "SlyVPN/SlyVPN_AntiZapret-V2Ray"
           version: "latest"
           file: "geosite.dat"
-          target: "geosite.dat"
+#          target: "geosite.dat"
           token: ${{ secrets.testclassictoken }}
 
       - name: Generate release tag
