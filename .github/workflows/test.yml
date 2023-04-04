@@ -36,12 +36,10 @@ jobs:
           wget https://github.com/Loyalsoldier/geoip/raw/release/geoip.dat
           wget https://github.com/Loyalsoldier/geoip/raw/release/geoip.dat.sha256sum
 #          wget https://github.com/SlyVPN/SlyVPN_AntiZapret-V2Ray/releases/latest/download/geosite.dat
-  
-  
       - name: get file
         env:
           TOKEN: ${{ secrets.repo_token }}
-          run: |
+        run: |
           curl -v -H "Authorization: token ${TOKEN}" https://github.com/SlyVPN/SlyVPN_AntiZapret-V2Ray/releases/latest/download/geosite.dat  
       
       - name: Move and zip files and generate sha256 hash
