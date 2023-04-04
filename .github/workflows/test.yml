@@ -38,7 +38,7 @@ jobs:
 #          wget https://github.com/SlyVPN/SlyVPN_AntiZapret-V2Ray/releases/latest/download/geosite.dat
       - name: get file
         env:
-          TOKEN: ${{ secrets.repo_token }}
+          TOKEN: ${{ secrets.getgeositedattoken }}
         run: |
           curl -v -H "Authorization: token ${TOKEN}" https://github.com/SlyVPN/SlyVPN_AntiZapret-V2Ray/releases/latest/download/geosite.dat  
       
