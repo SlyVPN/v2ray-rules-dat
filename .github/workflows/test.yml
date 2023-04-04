@@ -48,12 +48,12 @@ jobs:
           install -Dp ./geoip.dat.sha256sum ./publish/geoip.dat.sha256sum
           
       - name: replicate
-        uses: SlyVPN/publish-release-to-another-action@v2.0.0
+        uses: kumarabd/publish-release-to-another-action@v2.0.0
         with:
           repo: "SlyVPN/SlyVPN_AntiZapret-V2Ray"
           version: "latest"
           file: "geosite.dat"
-#          target: "geosite.dat"
+          release_target: "geosite.dat"
           token: ${{ secrets.testclassictoken }}
 
       - name: Generate release tag
