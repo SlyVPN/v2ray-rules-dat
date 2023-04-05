@@ -26,35 +26,21 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-   
       # Runs a set of commands using the runners shell
       - name: Get geoip.dat relative files
         run: |
           wget https://github.com/Loyalsoldier/geoip/raw/release/geoip.dat
           wget https://github.com/Loyalsoldier/geoip/raw/release/geoip.dat.sha256sum
-#          wget https://github.com/SlyVPN/SlyVPN_AntiZapret-V2Ray/releases/latest/download/geosite.dat
-      - name: get file
-        env:
-          TOKEN: ${{ getgeositedattoken }}
-        run: |
-          curl -v -H "Authorization: token ${TOKEN}" https://github.com/SlyVPN/SlyVPN_AntiZapret-V2Ray/releases/latest/download/geosite.dat  
-      
+          wget https://github.com/SlyVPN/AntiZapret-V2Ray/releases/latest/download/geosite.dat
+          wget https://github.com/SlyVPN/AntiZapret-V2Ray/releases/latest/download/rkn.txt
+
       - name: Move and zip files and generate sha256 hash
         run: |
           install -Dp ./geoip.dat ./publish/geoip.dat
           install -Dp ./geoip.dat.sha256sum ./publish/geoip.dat.sha256sum
+          install -Dp ./geosite.dat ./publish/geosite.dat
+          install -Dp ./rkn.txt ./publish/rkn.txt
           
-      - name: replicate
-        uses: kumarabd/publish-release-to-another-action@v2.0.0
-        with:
-          repo: "SlyVPN/SlyVPN_AntiZapret-V2Ray"
-          version: "latest"
-          file: "geosite.dat"
-          release_target: "geosite.dat"
-          token: ${{ secrets.testclassictoken }}
 
       - name: Generate release tag
         id: tag
@@ -68,3 +54,5 @@ jobs:
           files: |
             geoip.dat
             geoip.dat.sha256sum
+            geosite.dat
+            rkn.txt
